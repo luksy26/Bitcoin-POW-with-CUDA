@@ -1,6 +1,3 @@
-Nume: Lăzăroiu Lucas
-Grupă: 341C5
-
 # Tema 2
 
 Organizare
