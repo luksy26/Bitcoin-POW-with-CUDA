@@ -2,7 +2,7 @@
 
 Organizare
 -
-Scopul temei este simularea participarii ca si miner intr-un blockchain. Acest lucru presupune gasirea unei valori intregi nonce, cu ajutorul careia se genereaza un nou block hash mai mic decat o anumita dificultate (i.e. un anumit numar de zero-uri consecutive ca si prefix al hash-ului)
+Scopul temei este simularea participarii ca si miner intr-un blockchain. Acest lucru presupune gasirea unei valori intregi nonce, cu ajutorul careia se genereaza un nou block hash mai mic decat o anumita dificultate (i.e. un anumit numar de zero-uri consecutive ca si prefix al hash-ului).
 
 * Pe host se pornesc suficiente thread-uri CUDA pentru a verifica toate numerele de la 1 la MAX_NONCE. Block_size-ul folosit este 256, dat fiind faptul ca este un multiplu de 32 (warp size). Alte motive pentru care am ales aceasta valoare sunt pentru a maximiza occupancy si pentru ca am observat ca se foloseste in majoritatea laboratoarelor de ASC la partea de GPU.
 * Functia findNonce din gpu_miner.cu calculeaza potentialul block_hash folosind nonce-ul corespunzator index-ului si verifica daca indeplineste conditia de dificultate. Se fac si 3 verificari pentru a salva timpul de executie in cazul in care nonce-ul a fost deja gasit de alt thread astfel:
@@ -20,7 +20,7 @@ Scopul temei este simularea participarii ca si miner intr-un blockchain. Acest l
 
 Implementare
 -
-* Tema a fost implementata in intregime: kernel-urile findNonce si merkleTree pentru calcularea top_hash-ului, citirea tranzactiilor din fisierul data/inputs.txt, printarea resultatelor in results.csv, respectiv data/outputs.csv.
+* Tema a fost implementata in intregime: kernel-urile findNonce si merkleTree pentru calcularea top_hash-ului, citirea tranzactiilor din fisierul data/inputs.txt, printarea rezultatelor in results.csv, respectiv data/outputs.csv.
 * S-a facut si implementarea seriala a calcularii top-hash-ului in cpu_miner.c in vederea analizei comparative.
 * Pentru rularea bonusului (i.e. top_hash creat din fisierele data/inputs.txt, nu din cele 4 tranzactii predefinite in schelet), trebuie doar decomentata linia 8 din gpu_miner.cu, respectiv linia 9 din cpu_miner.c.
 * Se vor obtine aceleasi rezultate in results.csv, deoarece data/inputs.txt contine deja cele 4 tranzactii predefinite in schelet. Pentru testarea scalabilitatii se poate folosi inputs_generator.cpp pentru generarea fisierului inputs.txt cu diverse volume de date.
