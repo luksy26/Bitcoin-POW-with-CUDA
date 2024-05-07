@@ -58,7 +58,7 @@ Implementare
   * Presupun ca ar putea fi de la lansarea prea multor thread-uri ce duce la depasirea memoriei GPU.
 * Se poate observa ca pentru valori mici ale lui N (<10.000), timpurile de rulare sunt asemanatoare pe CPU si pe GPU, dar incepand cu 50.000 de tranzactii, se observa un SPEEDUP de 3x, ce creste direct proportional cu N: pentru 2.500.000 de tranzactii acesta ajunge la 30x.
 * Intuitiv, pe GPU, se pare ca timpul de executie al kernel-ului merkleTree poate fi chiar neglijabil sub un milion de tranzactii, deoarece timpul total se mentine in jur de 0.1s. Chiar si pentru N > 1.000.000, rata cresterii nu se compara cu cea de pe CPU.
-* Tot intuitiv, motivul pentru care CPU-ul se descurca atat de bine pentru N < 10000 este deoarece overhead-ul pentru crearea si gestionarea thread-urilor nu compenseaza inca pentru marimea setului de date.
+* Tot intuitiv, motivul pentru care CPU-ul se descurca atat de bine pentru N < 10000 este deoarece marimea setului de date nu compenseaza inca pentru overhead-ul pentru crearea si gestionarea thread-urilor.
 * In plus, varianta pe CPU este foarte eficienta oricum, deoarece linia 28 'if (idx % (1 << (tree_level + 1)) == 0)' din gpu_miner.cu, ce verifica daca thread-ul curent ar trebui sa acumuleze un rezultat partial, nu mai este necesara in cpu_miner.c. La linia 224 idx se incrementeaza cu 1 << (level + 1). Acest mic artificiu reduce exponential overhead-ul buclei for.
 * Oricum, speedup-ul obtinut este inca destul de bun. Presupunerea mea este ca acesta se va opri din crestere pentru valori foarte mari ale lui N (de ordinul zecilor de milioane, cand kernel-ul merkleTree va acapara timpul de executie), poate undeva la 50x sau 100x.
 
