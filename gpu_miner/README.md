@@ -1,8 +1,7 @@
 Descriere:
 
-- Veți porni de la directorul gpu_miner, în care veți realiza implementarea în CUDA a logicii din cpu_miner.
-- Veți implementa funcția device findNonce, care va paraleliza căutarea nonce-ului, folosind CUDA Threads. Aceasta trebuie implementată astfel încât să caute prin toate numerele de la 1 la MAX_NONCE.
-- Pentru a va ajută, aveți deja implementate funcții ajutătoare în utils.cu. Vă recomandăm să va folosiți de ele în implementarea voastră.
+- In gpu_miner se realizeaza implementarea în CUDA a logicii din cpu_miner.
+- Se implementeaza funcția device findNonce, care va paraleliza căutarea nonce-ului, folosind CUDA Threads. Aceasta cauta prin toate numerele de la 1 la MAX_NONCE.
 Nonce-ul găsit, hash-ul block-ului, precum și timpul rulării kernel-ului, vor fi scrise într-un fișier results.csv, în urmă apelarii funcției printResult din utils.cu.
 
 Observații:
